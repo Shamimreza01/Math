@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Root Finding | Numerical Analysis</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+   <link rel="stylesheet" href="All_style\Root_finding_page.css">
+    <script src="All_script\root_finding_script.js"></script>
+    
+</head>
+<!-- header part start -->
+<header class="header">
+  <label class="logo">Math</label>
+    <ul class="header-ul">
+      <!-- Initially hidden -->
+      <li class="header-li"><a href="index.html" >Home</a></li>
+      <li class="header-li"><a href="#numerical">Numerical</a></li>
+      <li class="header-li"><a href="#calculus">Calculus</a></li>
+      <li class="header-li"><a href="#differential">Differential</a></li>
+  </ul>
+</header>
+
+<div class="slideshow-container">
+
+<div class="mySlides fade">
+<div class="numbertext">1 / 4</div>
+<img src="homepage image\scroll header 1.jpg" style="width:100%">
+<div class="text"> Mathemetical Calculator </div>
+</div>
+
+<div class="mySlides fade">
+<div class="numbertext">2 / 4</div>
+<img src="homepage image\scrolling header 2.jpg" style="width:100%">
+<div class="text">Numerical Calculator </div>
+</div>
+
+<div class="mySlides fade">
+<div class="numbertext">3 / 4</div>
+<img src="homepage image\scroll header 1.jpg" style="width:100%">
+<div class="text">Calculus Solver </div>
+</div>
+
+<div class="mySlides fade">
+<div class="numbertext">4 / 4</div>
+<img src="homepage image\scrolling header 2.jpg" style="width:100%">
+<div class="text"> Graph paper/3D Graph </div>
+</div>
+
+<div style="text-align:center">
+<span class="dot"></span> 
+<span class="dot"></span> 
+<span class="dot"></span> 
+<span class="dot"></span> 
+
+</div>
+
+</div>
+
+<script src="All_script\header_image_scrolling.js"></script>
+<!-- header part end -->
+
+
+<br>
+<br>
+<br>
+<body>
+<div class="content-box-root">
+
+<div class="content-1-head-numerical"> Solution of Algebraic and Transcendental Equation 
+</div>
+<div class="collection-description">
+In scientific and engineering studies, a frequently occurring problem is to find 
+the roots of equations of the form<br>
+ <span style="color:red;text-align:center;"> f(x) = 0 </span><br>
+If f(x) is a quadratic, cubic or a biquadratic expression, then algebraic
+formulae are available for expressing the roots in terms of the coefficients. 
+On the other hand, when f(x) is a polynomial of higher degree or an expression
+ involving transcendental functions, algebraic methods are not available, and 
+ recourse must be taken to find the roots by approximate methods.
+</div>
+
+
+<button id="calculate-button"> Learn more </button>
+<br><br><br><br>
+<div class="solver-box">
+<div class="content-1-head-numerical"> solver details </div>
+In this website you can able to find solution of any algebric and transendental Equation using 
+5 method. those are 
+<ul>
+<li><button id="link-button"> Bisection </button></li>
+<li> <button id="link-button">False position</button></li>
+<li> <button id="link-button">Iteration</button> </li>
+<li><button id="link-button"> Newton Rapson</button> </li>
+<li> <button id="link-button">Auto choice</button></li>
+</ul>
+</div>
+
+</div>
+
+<br>
+<br>
+<!--try it part start-->
+
+<!--all script-->
+<!--math.js-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.5.0/math.min.js"></script>
+<!-- bisection script-->
+<script src="All_script\root_finding_script.js"></script>
+<!--plotly.js-->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<!--graph-->
+<script src="#"></script>
+<!-- script part close-->
+
+<!--try it html start-->
+<div class="root_finder_head"> Find the Root using fav method </div>
+<br><br>
+<div class="root_finder_box" id="root_finder_box">
+
+<div class="root_finder_head"> 
+<select id="root_finding_method_selection" onchange="conv()">
+<option value="bisection"> bisection
+<option value="false_position"> false position
+<option value="iteration"> iteration
+<option value="newton_Rapson"> newton rapson
+</select>
+</div>
+<div> for getting <button> details </button> and  <button> C code </button> goto the each method page</div>
+
+<div align="center"> graph</div>
+<br>
+
+
+<div class="box" id="graph"><img  src="homepage image\graph_sample.jpg">
+</div>
+
+
+
+<div class="box" id="bisection">
+    <label class="equation">Bisection Equation</label>
+    <input id="bisection_Equation" type="text">
+    <br>
+    <button id="drawGraphButton" onclick="graphForbisection()"> graph</button>
+    <label>Interval</label>
+    <input class="bisection_interval" id="bisection_interval_a" placeholder="a">
+    <input class="bisection_interval" id="bisection_interval_b" placeholder="b">
+    <button class="calculate-button" id="bisection_calculculate" onclick="bisection_rootFinder()">Calculate</button>
+    <div id="bisection_result"></div>
+    <table id="steps_table"></table>
+    <!-- This table displays the steps -->
+ </div>
+ 
+
+
+
+ <div class="box" id="falsePosition">
+ <label class="equation">False position Equation</label>
+ <input id="fp_Equation" type="text">
+ <br>
+ <button id="drawGraphButton" onclick="graphForfalseposition()"> graph</button>
+ <label>Interval</label>
+ <input class="fp_interval" id="fp_interval_a" placeholder="a">
+ <input class="fp_interval" id="fp_interval_b" placeholder="b">
+ <button class="calculate-button" id="fp_calculate"  onclick="falsePosition_rootFinder()" >Calculate</button>
+ <div id="fp_result"></div>
+ <table id="steps_table"></table>
+ <!-- This table displays the steps -->
+ </div>
+
+
+
+
+ <div class="box" id="iteration">
+ <label class="equation">Iteration Equation</label>
+ <input id="iteration_Equation" type="text">
+ <br>
+ <button id="drawGraphButton"  onclick="graphForiteration()"> graph</button>
+ <label>Initial guess</label>
+ <input class="iteration_interval" id="iteration_initial_guss" placeholder="x0">
+ <button class="calculate-button" id="iteration_calculate"  onclick="iteration_rootFinder()">Calculate</button>
+ <div id="iteration_result"></div>
+ <table id="steps_table"></table>
+ <!-- This table displays the steps -->
+ </div>
+
+
+
+
+ <div class="box" id="newtonRapson">
+ <label class="equation">Newton Raphson Equation</label>
+ <input id="nr_Equation" type="text">
+ <br>
+ <button id="drawGraphButton"  onclick="graphFornewtonraphson()"> graph</button>
+ <label>Initial guess</label>
+ <input class="newton_raphson_interval" id="nr_initial_guess" placeholder="a">
+ <button class="calculate-button" id="newton_rapson_calculate" onclick="newtonRaphson_rootFinder()">Calculate</button>
+ <div id="nr_result"></div>
+ <table id="steps_table"></table>
+ <!-- This table displays the steps -->
+ </div>
+ 
+
+
+</div>
+
+<!-- tryit section close-->
+
+
+
+
+
+
+
+
+</body>
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<!-- footer part start -->
+<footer class="foot">
+  <div class="ft">
+  <span style="text-decoration:underline;">ABOUT US</span>
+  <br>
+  <br>
+  <img class="ft-img1" src="homepage image\shamim.jpg">
+  <br>
+  MD SHAMIM REZA 
+  <br>
+  <span style="font-size:15px;">Department of mathematics</span>
+  <br>
+  PUST
+  </div>
+  
+  <div class="ft"> 
+  <span style="text-decoration:underline;">SERVICES </span>
+  <br>
+  <br>
+  <ul class="footer-ul">
+  <li class="footer-li">Numerical solution</li>
+  
+  <li class="footer-li">Calculus</li>
+  <li class="footer-li">Differentiation</li>
+  <li class="footer-li">Laplace</li>
+  <li class="footer-li"> Forior</li>
+  <ul>
+  </div>
+  
+  <div class="ft"> 
+  <span style="text-decoration:underline;">CONTACT </span>
+  <br><br>
+  MD SHAMIM REZA <br>
+  Mobile: 01797903116<br>
+  <span class="email">Email:srshamimreza9790311 6@gmail.com
+  </div>
+  
+  <div class="copyright">  <span>© infinity.wapkiz.com && © shamim reza</span>
+  </div>
+  </footer>
+  </html>

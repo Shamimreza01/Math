@@ -1,0 +1,62 @@
+
+
+<form id="my-form">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" class="form-data">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" class="form-data">
+    <button type="button" onclick="sendData()">Submit</button>
+  </form>
+  <script>
+    // Get the form element
+    const form = document.getElementById("my-form");
+  
+    // Define a function to send data to the web app URL
+    function sendData() {
+      // Get all the input elements with the class "form-data"
+      const inputs = form.querySelectorAll(".form-data");
+  
+      // Create an object to store the data
+      const data = {};
+  
+      // Loop through the input elements and add their name and value to the data object
+      for (let input of inputs) {
+        data[input.name] = input.value;
+      }
+  
+      // Create a new XMLHttpRequest object
+      const xhr = new XMLHttpRequest();
+  
+      // Set the request method to POST and the URL to the web app URL
+      xhr.open("POST", "[https://script.google.com/macros/library/d/1qcn_O7WyqA_YWHI7E2HbEL4NJixO5G4bvfJi1MMrhGBFBJ-O64OaqStc/2]");
+  
+      // Set the request header to indicate the data type
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  
+      // Define a callback function to handle the response
+      xhr.onload = function() {
+        // Parse the response as JSON
+        const response = JSON.parse(xhr.responseText);
+  
+        // Check the result property of the response
+        if (response.result === "success") {
+          // If successful, alert the user and clear the form
+          alert("Data submitted successfully!");
+          form.reset();
+        } else {
+          // If not successful, alert the user and log the error
+          alert("Something went wrong!");
+          console.error(response.error);
+        }
+      };
+  
+      // Encode the data object as a query string
+      const encodedData = Object.keys(data).map(function(key) {
+        return encodeURIComponent(key) + "=" + encodeURIComponent(data[key]);
+      }).join("&");
+  
+      // Send the data to the web app URL
+      xhr.send(encodedData);
+    }
+  </script>
+  

@@ -1,0 +1,68 @@
+<html>
+<head>
+  <title>3D.js Example</title>
+  <!-- Link the 3D.js library -->
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <!-- Link the CSS file -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>3D.js Example</h1>
+  <p>This is a simple example of using 3D.js to create a 3D scene.</p>
+  <!-- Create a div element for the 3D scene -->
+  <div id="graphh"></div>
+  <!-- Write the JavaScript code for the 3D scene -->
+
+  // Load the plotly.js library
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script>
+  // Define the function a(x,y)
+  function a(x, y) {
+    return ((x-2)^2+ (y -2)^2)-4;
+  }
+  
+  // Define the range and step size for x and y
+  var xMin = -10, xMax = 10, xStep = 0.1;
+  var yMin = -10, yMax = 10, yStep = 0.1;
+  
+  // Create an array of x values
+  var xValues = Plotly.d3.range(xMin, xMax, xStep);
+  
+  // Create an array of y values
+  var yValues = Plotly.d3.range(yMin, yMax, yStep);
+  
+  // Create a 2D array of z values
+  var zValues = xValues.map(function(x) {
+    return yValues.map(function(y) {
+      return a(x, y);
+    });
+  });
+  
+  // Define the data for the 3D surface plot
+  var data = [{
+    type: 'surface',
+    x: xValues,
+    y: yValues,
+    z: zValues,
+    colorscale: 'Viridis',
+    showscale: false
+  }];
+  
+  // Define the layout for the 3D graph
+  var layout = {
+    title: '3D Graph of a(x,y)=((2 x y)/(x^(2)+y^(2)))',
+    scene: {
+      xaxis: {title: 'x'},
+      yaxis: {title: 'y'},
+      zaxis: {title: 'a(x,y)'}
+    }
+  };
+  
+  // Create a div element to hold the 3D graph
+  var graphDiv = document.getElementById('graphh');
+  
+  // Plot the 3D graph using plotly.js
+  Plotly.newPlot(graphDiv, data, layout);
+</script>
+</body>
+</html>
